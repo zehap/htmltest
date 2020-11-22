@@ -1,0 +1,50 @@
+<html>
+
+<head>
+</head>
+<body>
+<input type="text" id='input'>
+<input type="submit" value="Go" id='Go' onclick='printName()'>
+<div id='result'></div>
+
+</body>
+</html>
+<script type="text/javascript">
+function getParam(sname) {
+
+var params = location.search.substr(location.search.indexOf("?") + 1);
+var sval = "";
+params = params.split("&");
+for (var i = 0; i < params.length; i++) {
+    temp = params[i].split("=");
+    if ([temp[0]] == sname)
+     { sval = temp[1]; 
+     }
+}
+return sval;
+}
+function printName() {
+   var num = getParam("input");
+   var end=1;
+   var end_prime=1;
+   if(num <0 && num > 100000)
+	end = "Out of range";
+   if(num > 0 && num < 100000){
+   for(var i=2;i<=num;i++)
+   {
+      if(num%i==0){
+	      end_prime = 1;
+	      for(var j = 2;j < i; j++){
+		      if(i%j == 0)
+		      	end_prime=0;
+            }
+        if(end_prime==1)
+        	end=j;
+                }
+   }
+}
+
+
+   alert(end);
+}
+</script>
